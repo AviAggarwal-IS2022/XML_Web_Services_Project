@@ -2,7 +2,7 @@
 
 ## Logo
 
-![NeightbourhoodFriend Logo](Logo.jpeg)
+![NeightbourhoodFriend Logo](Logo.jpeg =50x40)
 
 ## **Introduction**
 
@@ -13,9 +13,15 @@ Moving to a new place and excited to know all about your new neighborhood? Our N
 
 ## **Story Board**
 
+Image 1 - Home Screen View
+
 ![NeightbourhoodFriend Homepage](Home_Screen.jpeg)
 
+Iamge 2 - Restaurant List View
+
 ![NeightbourhoodFriend Restaurants](Restaurants.jpeg)
+
+Image 3 - Recreation Facilities View
 
 ![NeightbourhoodFriend Recreation Facilities](Recreation_Facilities.jpeg)
 
