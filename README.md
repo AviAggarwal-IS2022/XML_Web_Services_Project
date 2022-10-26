@@ -17,15 +17,13 @@ Image 1 - Home Screen View
 
 <img src="Home_Screen.jpeg" width="700">
 
-![NeightbourhoodFriend Homepage](Home_Screen.jpeg)
-
 Iamge 2 - Restaurant List View
 
-![NeightbourhoodFriend Restaurants](Restaurants.jpeg)
+<img src="Restaurants.jpeg" width="700">
 
 Image 3 - Recreation Facilities View
 
-![NeightbourhoodFriend Recreation Facilities](Recreation_Facilities.jpeg)
+<img src="Recreation_Facilities.jpeg" width="700">
 
 ## **Data Sources**
 
