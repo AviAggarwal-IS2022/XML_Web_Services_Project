@@ -15,6 +15,8 @@ Moving to a new place and excited to know all about your new neighborhood? Our N
 
 Image 1 - Home Screen View
 
+<img src="Home_Screen.jpeg" width="700">
+
 ![NeightbourhoodFriend Homepage](Home_Screen.jpeg)
 
 Iamge 2 - Restaurant List View
