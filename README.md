@@ -2,9 +2,7 @@
 
 ## Logo
 
-<img src="Logo.jpeg" width="100">
-
-![NeightbourhoodFriend Logo](Logo.jpeg =100x20)
+<img src="Logo.jpeg" width="300">
 
 ## **Introduction**
 
