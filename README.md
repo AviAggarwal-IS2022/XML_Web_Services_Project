@@ -2,7 +2,7 @@
 
 ## Logo
 
-![NeightbourhoodFriend Logo](Logo.jpeg =50x40)
+![NeightbourhoodFriend Logo](Logo.jpeg =100x20)
 
 ## **Introduction**
 
