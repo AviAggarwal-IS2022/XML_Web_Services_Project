@@ -13,7 +13,7 @@ Moving to a new place and excited to know all about your new neighborhood? Our N
 
 ## **Story Board**
 
-![NeightbourhoodFriend Homepage](Home_Screen.jpg)
+![NeightbourhoodFriend Homepage](Home_Screen.jpeg)
 
 ![NeightbourhoodFriend Restaurants](Restaurants.jpeg)
 
