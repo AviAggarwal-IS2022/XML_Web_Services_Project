@@ -13,11 +13,11 @@ Moving to a new place and excited to know all about your new neighborhood? Our N
 
 ## **Story Board**
 
-![NeightbourhoodFriend Homepage](HomeScreen.jpg)
+![NeightbourhoodFriend Homepage](Home_Screen.jpg)
 
 ![NeightbourhoodFriend Restaurants](Restaurants.jpeg)
 
-![NeightbourhoodFriend Recreation Facilities](RecreationFacilities.jpeg)
+![NeightbourhoodFriend Recreation Facilities](Recreation_Facilities.jpeg)
 
 ## **Data Sources**
 
