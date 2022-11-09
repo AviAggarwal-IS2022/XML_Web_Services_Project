@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/XML_Web_Services_Project.styles.css" asp-append-version="true" />
+    <link href="~/css/datatable.css" rel="stylesheet" />
+    @*<script src="https://code.jquery.com/jquery-3.5.1.js"></script>*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/js/datatable.js"></script>
 </head>
 <body>
     <header>
@@ -41,10 +48,6 @@
             &copy; 2022 - XML_Web_Services_Project - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
