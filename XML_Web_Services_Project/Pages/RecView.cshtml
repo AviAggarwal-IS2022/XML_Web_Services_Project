@@ -1,0 +1,49 @@
+﻿@page
+@using NeighborhoodFriend_RecreationData
+@model XML_Web_Services_Project.Pages.RecViewModel
+@{
+    ViewData["Title"] = "Recreation Data";
+    List<RecreationData> recreations = (List<RecreationData>)ViewData["RecDatas"];
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th style="text-align:center">Facility Type</th>
+                <th style="text-align:center">Facility Name</th>
+                <th style="text-align:center">ZIP</th>
+                <th style="text-align:center">Phone Number</th>
+                <th style="text-align:center">Neighbohood</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (RecreationData RecreationData in recreations)
+                {
+                    <tr>
+                        <td>@RecreationData.FacilityType</td>
+                        <td>@RecreationData.Name</td>
+                        <td>@RecreationData.ZipCode</td>
+                        <td>@RecreationData.Phone</td>
+                        <td>@RecreationData.Location.HumanAddress</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        //        debugger
+        $('#myTable').DataTable({
+            //            stateSave: true
+
+        });
+    });
+</script>
