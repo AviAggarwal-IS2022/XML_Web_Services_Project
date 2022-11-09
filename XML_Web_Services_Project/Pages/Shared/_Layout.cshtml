@@ -40,18 +40,18 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid p-0">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-black">
         <div class="container">
-            &copy; 2022 - XML_Web_Services_Project - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+            <div class="row">
+                <p class="text-white mb-1" style="text-align: center"> For further queries, reach out to us at customersupport&#x40neighborhoodfriend.com </p>
+            </div>
     </footer>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
