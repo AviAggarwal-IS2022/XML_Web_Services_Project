@@ -1,0 +1,54 @@
+﻿@page
+@using NeighborhoodFriend_CrimeData
+@model XML_Web_Services_Project.Pages.CrimeViewModel
+@{
+    ViewData["Title"] = "Crime Data";
+    List<CrimeData> crimes = (List<CrimeData>)ViewData["CrimeDatas"];
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th style="text-align:center">Incident No.</th>
+                <th style="text-align:center">Date Reported</th>
+                <th style="text-align:center">Status</th>
+                <th style="text-align:center">Offence</th>
+                <th style="text-align:center">Location</th>
+                <th style="text-align:center">ZIP</th>
+                <th style="text-align:center">Neighborhood</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (CrimeData CrimeData in crimes)
+                {
+                    <tr>
+                        <td>@CrimeData.IncidentNo</td>
+                        <td>@CrimeData.DateReported</td>
+                        <td>@CrimeData.Clsd</td>
+                        <td>@CrimeData.Offense</td>
+                        <td>@CrimeData.Location</td>
+                        <td>@CrimeData.Zip</td>
+                        <td>@CrimeData.CommunityCouncilNeighborhood</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        //        debugger
+        $('#myTable').DataTable({
+            //            stateSave: true
+
+        });
+    });
+</script>
