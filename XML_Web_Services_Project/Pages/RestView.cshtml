@@ -1,4 +1,65 @@
 ﻿@page
+@using NeighborhoodFriend_RestaurantData
 @model XML_Web_Services_Project.Pages.RestViewModel
 @{
+    ViewData["Title"] = "Restaurant Data";
+    List<RestaurantData> restaurants = (List<RestaurantData>)ViewData["RestDatas"];
 }
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <table id="myTable">
+        <thead>
+            <tr>
+                <th style="text-align:center">License No.</th>
+                <th style="text-align:center">Restaurant Name</th>
+                <th style="text-align:center">Address</th>
+                <th style="text-align:center">City</th>
+                <th style="text-align:center">State</th>
+                <th style="text-align:center">Postal Code</th>
+                <th style="text-align:center">Phone Number</th>
+                <th style="text-align:center">Action Date</th>
+                <th style="text-align:center">Action Status</th>
+                <th style="text-align:center">Violation Description</th>
+                <th style="text-align:center">Violation Comments</th>
+                <th style="text-align:center">Neighbohood</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (RestaurantData RestaurantData in restaurants)
+                {
+                    <tr>
+                        <td>@RestaurantData.LicenseNo</td>
+                        <td>@RestaurantData.BusinessName</td>
+                        <td>@RestaurantData.Address</td>
+                        <td>@RestaurantData.City</td>
+                        <td>@RestaurantData.State</td>
+                        <td>@RestaurantData.PostalCode</td>
+                        <td>@RestaurantData.PhoneNumber</td>
+                        <td>@RestaurantData.ActionDate</td>
+                        <td>@RestaurantData.ActionStatus</td>
+                        <td>@RestaurantData.ViolationDescription</td>
+                        <td>@RestaurantData.ViolationComments</td>
+                        <td>@RestaurantData.Neighborhood</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        //        debugger
+        $('#myTable').DataTable({
+            //            stateSave: true
+
+        });
+    });
+</script>
