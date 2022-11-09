@@ -17,9 +17,14 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar sticky-top navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">XML_Web_Services_Project</a>
+                <a class="navbar-brand" href="/">
+                    <div class="logo-image">
+                        <img src="~/Logo.jpeg" class="img-fluid">
+                    </div>
+                </a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Neighborhood Friend</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -27,28 +32,31 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-page="/RestView">Restaurants</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-page="/RecView">Recreation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-page="/CrimeView">Crime Rate</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid p-0">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top position-fixed footer text-muted bg-black">
         <div class="container">
-            &copy; 2022 - XML_Web_Services_Project - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+            <div class="row">
+                <p class="text-white mb-1" style="text-align: center"> For further queries, reach out to us at customersupport&#x40neighborhoodfriend.com </p>
+            </div>
     </footer>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
