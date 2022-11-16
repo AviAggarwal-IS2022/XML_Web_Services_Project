@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace XML_Web_Services_Project
+﻿namespace XML_Web_Services_Project
 {
     public class FeedbackForm
     {
