@@ -17,8 +17,6 @@ namespace XML_Web_Services_Project.Pages
 
         public void OnGet()
         {
-            string project = "Neighborhood Friend";
-
             var task = client.GetAsync("https://data.cincinnati-oh.gov/resource/k59e-2pvf.json");
             HttpResponseMessage result = task.Result;
             List<CrimeData> crimes = new List<CrimeData>();
