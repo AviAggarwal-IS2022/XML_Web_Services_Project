@@ -1,9 +1,11 @@
 ﻿@page
 @using NeighborhoodFriend_RecreationData
 @model XML_Web_Services_Project.Pages.RecViewModel
+@using Newtonsoft.Json.Linq
 @{
     ViewData["Title"] = "Recreation Data";
     List<RecreationData> recreations = (List<RecreationData>)ViewData["RecDatas"];
+    String ErrorString = (String)ViewData["Error"];
 }
 
 <div class="text-center">
@@ -16,20 +18,42 @@
                 <th style="text-align:center">Facility Name</th>
                 <th style="text-align:center">ZIP</th>
                 <th style="text-align:center">Phone Number</th>
-                <th style="text-align:center">Neighbohood</th>
+                @*<th style="text-align:center">Neighbohood</th>*@
+                <th style="text-align:center">Address</th>
+                <th style="text-align:center">City</th>
+                <th style="text-align:center">State</th>
+                <th style="text-align:center">Zip</th>
             </tr>
         </thead>
         <tbody>
             @{
-                foreach (RecreationData RecreationData in recreations)
+                if (recreations != null)
                 {
-                    <tr>
-                        <td>@RecreationData.FacilityType</td>
-                        <td>@RecreationData.Name</td>
-                        <td>@RecreationData.ZipCode</td>
-                        <td>@RecreationData.Phone</td>
-                        <td>@RecreationData.Location.HumanAddress</td>
-                    </tr>
+                    foreach (RecreationData RecreationData in recreations)
+                    {
+                        <tr>
+                            <td>@RecreationData.FacilityType</td>
+                            <td>@RecreationData.Name</td>
+                            <td>@RecreationData.ZipCode</td>
+                            <td>@RecreationData.Phone</td>
+                            @*<td>@RecreationData.Location.HumanAddress</td*@
+                            @{
+                                var HumanAddress = JObject.Parse(RecreationData.Location.HumanAddress);
+                            }
+                            <td>@HumanAddress.SelectToken("address")</td>
+                            <td>@HumanAddress.SelectToken("city")</td>
+                            <td>@HumanAddress.SelectToken("state")</td>
+                            <td>@HumanAddress.SelectToken("zip")</td>
+
+                        </tr>
+                    }
+                }
+                else{
+                    <h3>No Data to display</h3>
+                    if (ErrorString != null)
+                    {
+                        <p>Error encountered : @ErrorString</p>
+                    }
                 }
 
             }
