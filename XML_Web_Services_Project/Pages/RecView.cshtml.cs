@@ -16,8 +16,6 @@ namespace XML_Web_Services_Project.Pages
         }
         public void OnGet()
         {
-            string project = "Neighborhood Friend";
-
             try
             {
                 var task = IndexModel.client.GetAsync("https://data.cincinnati-oh.gov/resource/vset-45gc.json");

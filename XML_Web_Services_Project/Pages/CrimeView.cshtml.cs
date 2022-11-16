@@ -20,7 +20,6 @@ namespace XML_Web_Services_Project.Pages
 
         public void OnGet()
         {
-            string project = "Neighborhood Friend";
 
             try
             {
