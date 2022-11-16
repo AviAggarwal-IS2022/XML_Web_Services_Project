@@ -10,7 +10,7 @@
     public partial class RestaurantData
     {
         [JsonProperty("recordnum_license")]
-        public string RecordnumLicense { get; set; }
+        public string RecordNumLicense { get; set; }
 
         [JsonProperty("license_no")]
         public string LicenseNo { get; set; }
@@ -44,7 +44,7 @@
         public LicenseStatus LicenseStatus { get; set; }
 
         [JsonProperty("recordnum_insp")]
-        public string RecordnumInsp { get; set; }
+        public string RecordNumInsp { get; set; }
 
         [JsonProperty("insp_type")]
         public InspType InspType { get; set; }
