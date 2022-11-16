@@ -38,8 +38,19 @@
         [JsonProperty("theft_code", NullValueHandling = NullValueHandling.Ignore)]
         public TheftCode? TheftCode { get; set; }
 
-        [JsonProperty("hate_bias")]
-        public HateBias HateBias { get; set; }
+        private HateBias hateBias;
+
+        /*[JsonProperty("hate_bias")]*/
+        public HateBias GetHateBias()
+        {
+            return hateBias;
+        }
+
+        /*[JsonProperty("hate_bias")]*/
+        public void SetHateBias(HateBias value)
+        {
+            hateBias = value;
+        }
 
         [JsonProperty("dayofweek", NullValueHandling = NullValueHandling.Ignore)]
         public Dayofweek? Dayofweek { get; set; }
@@ -50,8 +61,19 @@
         [JsonProperty("cpd_neighborhood", NullValueHandling = NullValueHandling.Ignore)]
         public string CpdNeighborhood { get; set; }
 
-        [JsonProperty("weapons", NullValueHandling = NullValueHandling.Ignore)]
-        public Weapons? Weapons { get; set; }
+        private Weapons weapons;
+
+        /*[JsonProperty("weapons", NullValueHandling = NullValueHandling.Ignore)]*/
+        public Weapons GetWeapons()
+        {
+            return weapons;
+        }
+
+        /*[JsonProperty("weapons", NullValueHandling = NullValueHandling.Ignore)]*/
+        public void SetWeapons(Weapons value)
+        {
+            weapons = value;
+        }
 
         [JsonProperty("hour_from", NullValueHandling = NullValueHandling.Ignore)]
         public string HourFrom { get; set; }
@@ -68,11 +90,33 @@
         [JsonProperty("latitude_x", NullValueHandling = NullValueHandling.Ignore)]
         public string LatitudeX { get; set; }
 
-        [JsonProperty("victim_age")]
-        public Age VictimAge { get; set; }
+        private Age victimAge;
 
-        [JsonProperty("victim_race", NullValueHandling = NullValueHandling.Ignore)]
-        public Race? VictimRace { get; set; }
+        /*[JsonProperty("victim_age")]*/
+        public Age GetVictimAge()
+        {
+            return victimAge;
+        }
+
+        /*[JsonProperty("victim_age")]*/
+        public void SetVictimAge(Age value)
+        {
+            victimAge = value;
+        }
+
+        private Race victimRace;
+
+        /*[JsonProperty("victim_race", NullValueHandling = NullValueHandling.Ignore)]*/
+        public Race GetVictimRace()
+        {
+            return victimRace;
+        }
+
+        /*[JsonProperty("victim_race", NullValueHandling = NullValueHandling.Ignore)]*/
+        public void SetVictimRace(Race value)
+        {
+            victimRace = value;
+        }
 
         [JsonProperty("victim_ethnicity", NullValueHandling = NullValueHandling.Ignore)]
         public Ethnicity? VictimEthnicity { get; set; }
@@ -116,8 +160,19 @@
         [JsonProperty("floor", NullValueHandling = NullValueHandling.Ignore)]
         public Floor? Floor { get; set; }
 
-        [JsonProperty("side", NullValueHandling = NullValueHandling.Ignore)]
-        public Side? Side { get; set; }
+        private Side side;
+
+        /*[JsonProperty("side", NullValueHandling = NullValueHandling.Ignore)]*/
+        public Side GetSide()
+        {
+            return side;
+        }
+
+        /*[JsonProperty("side", NullValueHandling = NullValueHandling.Ignore)]*/
+        public void SetSide(Side value)
+        {
+            side = value;
+        }
 
         [JsonProperty("opening", NullValueHandling = NullValueHandling.Ignore)]
         public Opening? Opening { get; set; }

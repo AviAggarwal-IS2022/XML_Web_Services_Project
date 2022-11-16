@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Restaurant Data";
     List<RestaurantData> restaurants = (List<RestaurantData>)ViewData["RestDatas"];
+    String ErrorString = (String)ViewData["Error"];
 }
 
 <div class="text-center">
@@ -28,22 +29,34 @@
         </thead>
         <tbody>
             @{
-                foreach (RestaurantData RestaurantData in restaurants)
+                if (restaurants != null)
                 {
-                    <tr>
-                        <td>@RestaurantData.LicenseNo</td>
-                        <td>@RestaurantData.BusinessName</td>
-                        <td>@RestaurantData.Address</td>
-                        <td>@RestaurantData.City</td>
-                        <td>@RestaurantData.State</td>
-                        <td>@RestaurantData.PostalCode</td>
-                        <td>@RestaurantData.PhoneNumber</td>
-                        <td>@RestaurantData.ActionDate</td>
-                        <td>@RestaurantData.ActionStatus</td>
-                        <td>@RestaurantData.ViolationDescription</td>
-                        <td>@RestaurantData.ViolationComments</td>
-                        <td>@RestaurantData.Neighborhood</td>
-                    </tr>
+
+                    foreach (RestaurantData RestaurantData in restaurants)
+                    {
+                                <tr>
+                                    <td>@RestaurantData.LicenseNo</td>
+                                    <td>@RestaurantData.BusinessName?.Replace("\"", "")</td>
+                                    <td>@RestaurantData.Address</td>
+                                    <td>@RestaurantData.City</td>
+                                    <td>@RestaurantData.State</td>
+                                    <td>@RestaurantData.PostalCode</td>
+                                    <td>@RestaurantData.PhoneNumber</td>
+                                    <td>@RestaurantData.ActionDate</td>
+                                    <td>@RestaurantData.ActionStatus</td>
+                                    <td>@RestaurantData.ViolationDescription?.Replace("\"", "")</td>
+                                    <td>@RestaurantData.ViolationComments?.Replace("\"", "")</td>
+                                    <td>@RestaurantData.Neighborhood</td>
+                                </tr>
+                    }
+                }
+                else
+                {
+                            <h3>No Data to display</h3>
+                    if (ErrorString != null)
+                    {
+                                <p>Error encountered : @ErrorString</p>
+                    }
                 }
 
             }
