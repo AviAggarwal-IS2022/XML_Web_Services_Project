@@ -8,6 +8,7 @@ namespace XML_Web_Services_Project
         [StringLength(50, MinimumLength = 1)]
         public string Name { get; set; }
         [EmailAddress]
+
         public string Email { get; set; }
         [Phone]
         public string PhoneNumber { get; set; }
@@ -17,6 +18,7 @@ namespace XML_Web_Services_Project
 
         [Required(ErrorMessage = "Title is required")]
         [Range(1,5)]
+
         public int Rating { get; set; }
         public string? Feedback { get; set; }
     }
