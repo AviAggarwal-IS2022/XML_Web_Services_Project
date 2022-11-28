@@ -16,19 +16,23 @@ namespace XML_Web_Services_Project.Pages
         }
         public void OnGet()
         {
-            string project = "Neighborhood Friend";
+            string project = "Neighborhood Friend";            
+            List<RecreationData> recreationFacilityList = GetRecreationData();
+            ViewData["RecDatas"] = recreationFacilityList;
+        }
 
+        public List<RecreationData> GetRecreationData()
+        {
             var task = client.GetAsync("https://data.cincinnati-oh.gov/resource/vset-45gc.json");
             HttpResponseMessage result = task.Result;
-            List<RecreationData> recreations = new List<RecreationData>();
+            List<RecreationData> recreationFacilityList = new List<RecreationData>();
             if (result.IsSuccessStatusCode)
             {
                 Task<string> readString = result.Content.ReadAsStringAsync();
-                string jsonString = readString.Result;
-                recreations = RecreationData.FromJson(jsonString);
+                string recreationFacilities = readString.Result;
+                recreationFacilityList = RecreationData.FromJson(recreationFacilities);
             }
-
-            ViewData["RecDatas"] = recreations;
+            return recreationFacilityList;
         }
     }
 }
