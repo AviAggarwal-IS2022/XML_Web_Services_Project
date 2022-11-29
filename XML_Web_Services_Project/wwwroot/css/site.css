@@ -30,6 +30,7 @@ body {
 
 img {
     border-radius: 5px 5px 0 0;
+    
 }
 
 
@@ -74,8 +75,8 @@ img {
 
 
 .flip-card-back {
-    background-color: black;
-    color: white;
+    background-color: lavenderblush;
+    color: black;
     transform: rotateY(180deg);
 }
 
@@ -92,5 +93,12 @@ img {
 }
 
 #content {
-    padding: 25% 25% 5%;
+    padding: 10% 25% 5%;
+}
+
+
+
+#imgbg {
+    border-radius: 5px 5px 0 0;
+    opacity:0.8;
 }

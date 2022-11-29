@@ -8,10 +8,11 @@
 }
 
 
-<div class="container col-6">
+
     <div id="content">
             <div class="text-center">
                 <div class="row">
+                <h3>Recreation Facilities</h3>
                         <form action="" method="get" class="form-inline">
                             <input asp-for="Query" name ="query" id="query" class="form-control mr-sm-2 mb-2" placeholder="Postal Code" />
                     <button type="submit" class="btn btn-primary bg-dark text-light mb-2">Search</button>
@@ -19,7 +20,7 @@
                </div>
             </div>
     </div>
- </div>
+
  
 <div class="container marketing">
     @if (Model.SearchCompleted)
@@ -28,23 +29,32 @@
         {
             @foreach (RecreationData RecreationData in recreations)
             {
-                <hr class="featurette-divider">
+                <div class="card m-sm-5" style="background-color: lavenderblush;">
+                <div class="card-body">
+
                 <div class="row featurette">
-                    <div>
-                        <h4>@RecreationData.FacilityType</h4>
-                        <p class="lead">@RecreationData.Name</p>
-                        <p class="lead">@RecreationData.ZipCode</p>
-                        <p class="lead">@RecreationData.Phone</p>
+                    <div class="text-center">
+                                <h4>@RecreationData.Name</h4>
+                                <p class="lead"><b> Facility Type:</b> @RecreationData.FacilityType</p>
+                                <p class="lead"><b>ZIP: </b> @RecreationData.ZipCode
+
+                </p>
+                                <p class="lead"><b>PhoneNumber:</b> @RecreationData.Phone
+
+                </p>
                         <p class="lead">@{
                             var HumanAddress = @RecreationData.Location.HumanAddress;
                             String[] pairs = HumanAddress.Split("\"");
                             string Address = pairs[3];
                          }</p>
-                        <p class="lead">@Address</p>
+                                <p class="lead"><b> Address:</b> @Address
+
+                </p>
 
                     </div>
                     </div>
-
+                    </div>
+                </div>
             }
 
         }
