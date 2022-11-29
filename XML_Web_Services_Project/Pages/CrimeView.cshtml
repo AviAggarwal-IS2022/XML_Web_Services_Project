@@ -24,18 +24,17 @@
             </tr>
         </thead>
         <tbody>
-            @{
-                foreach (CrimeData CrimeData in crimes)
+            @{foreach (CrimeData CrimeData in crimes)
                 {
-                    <tr>
-                        <td>@CrimeData.IncidentNo</td>
-                        <td>@CrimeData.DateReported</td>
-                        <td>@CrimeData.Clsd</td>
-                        <td>@CrimeData.Offense</td>
-                        <td>@CrimeData.Location</td>
-                        <td>@CrimeData.Zip</td>
-                        <td>@CrimeData.CommunityCouncilNeighborhood</td>
-                    </tr>
+                        <tr>
+                            <td>@CrimeData.IncidentNo</td>
+                            <td>@CrimeData.DateReported</td>
+                            <td>@CrimeData.Clsd</td>
+                            <td>@CrimeData.Offense</td>
+                            <td>@CrimeData.Location</td>
+                            <td>@CrimeData.Zip</td>
+                            <td>@CrimeData.CommunityCouncilNeighborhood</td>
+                        </tr>
                 }
 
             }
