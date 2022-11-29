@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/RecreationElement"
+  },
+  "definitions": {
+    "RecreationElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "facility_type": {
+          "$ref": "#/definitions/FacilityType"
+        },
+        "name": {
+          "type": "string"
+        },
+        "zip_code": {
+          "type": "string",
+          "format": "integer"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        }
+      },
+      "required": [
+        "facility_type",
+        "location",
+        "name",
+        "phone",
+        "zip_code"
+      ],
+      "title": "RecreationElement"
+    },
+    "Location": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "human_address": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "human_address"
+      ],
+      "title": "Location"
+    },
+    "FacilityType": {
+      "type": "string",
+      "enum": [
+        "Aquatic Facility",
+        "Recreation Center",
+        "Golf Course"
+      ],
+      "title": "FacilityType"
+    }
+  }
+}
+

@@ -28,7 +28,12 @@
                         <td>@RecreationData.Name</td>
                         <td>@RecreationData.ZipCode</td>
                         <td>@RecreationData.Phone</td>
-                        <td>@RecreationData.Location.HumanAddress</td>
+                        @{
+                            var HumanAddress = @RecreationData.Location.HumanAddress;
+                            String[] pairs = HumanAddress.Split("\"");
+                            string Address = pairs[3];
+                         }
+                        <td>@Address</td>
                     </tr>
                 }
 

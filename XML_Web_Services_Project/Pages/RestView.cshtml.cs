@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NeighborhoodFriend_RestaurantData;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 
 namespace XML_Web_Services_Project.Pages
 {
@@ -25,6 +27,21 @@ namespace XML_Web_Services_Project.Pages
             {
                 Task<string> readString = result.Content.ReadAsStringAsync();
                 string jsonString = readString.Result;
+                JSchema RestaurantDataSchema = JSchema.Parse(System.IO.File.ReadAllText("restaurantschema.json"));
+                JArray RestaurantDataJsonArray = JArray.Parse(jsonString);
+                IList<string> validationEvents = new List<string>();
+                if (RestaurantDataJsonArray.IsValid(RestaurantDataSchema, out validationEvents))
+                {
+                    restaurants = RestaurantData.FromJson(jsonString);
+                }
+                else
+                {
+                    foreach (string evt in validationEvents)
+                    {
+                        Console.WriteLine(evt);
+                    }
+                }
+
                 restaurants = RestaurantData.FromJson(jsonString);
             }
 
