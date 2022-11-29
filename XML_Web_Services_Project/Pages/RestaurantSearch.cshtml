@@ -8,10 +8,11 @@
 }
 
 
-<div class="container col-6">
+
 <div id="content">
 <div class="text-center">
     <div class="row">
+                <h3>Restaurants</h3>
         <form action="" method="get" class="form-inline">
             <input asp-for="Query" name ="query" id="query" class="form-control mr-sm-2 mb-2" placeholder="Postal Code" />
                     <button type="submit" class="btn btn-primary bg-dark text-light mb-2">Search</button>
@@ -19,33 +20,35 @@
     </div>
 </div>
 </div>
-</div>
-<div class="container marketing">
+
+
+
     @if (Model.SearchCompleted)
     {
         @if (restaurants != null)
         {
             @foreach (RestaurantData RestaurantData in restaurants)
             {
-                            <hr class="featurette-divider">
 
+            <div class="card m-sm-5" style="background-color: lavenderblush;">
+                <div class="card-body">
                             <div class="row featurette">
-                                <div>
+                    <div class="text-center">
                                     <h4>@RestaurantData.BusinessName</h4>
-                                    <p class="lead">@RestaurantData.Address</p>
-                                    <p class="lead">@RestaurantData.City</p>
-                                    <p class="lead">@RestaurantData.State</p>
-                                    <p class="lead">@RestaurantData.PostalCode</p>
-                                    <p class="lead">@RestaurantData.PhoneNumber</p>
-                                    <p class="lead">@RestaurantData.LicenseNo</p>
+                            <p class="lead"><b>Address: </b> @RestaurantData.Address, @RestaurantData.City, @RestaurantData.State</p>
+                            <p class="lead"><b>ZIP: </b>@RestaurantData.PostalCode</p>
+                            <p class="lead"><b> PhoneNumber: </b> @RestaurantData.PhoneNumber</p>
+                            <p class="lead"><b> LicenseNo:</b> @RestaurantData.LicenseNo</p>
                                 </div>
                             </div>
-
+                    </div>
+                    </div>
+                    
             }
 
         }
     }
-</div>
+
 
 <script>
     $(document).ready(function () {

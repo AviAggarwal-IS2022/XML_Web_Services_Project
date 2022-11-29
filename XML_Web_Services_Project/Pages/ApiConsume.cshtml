@@ -1,0 +1,59 @@
+﻿@page
+@using ApiConsume;
+@model XML_Web_Services_Project.Pages.ApiConsumeModel
+@{
+    ViewData["Title"] = "Restaurant Data";
+    ApiConsumption tvshows = (ApiConsumption)ViewData["Tvshows"];
+}
+
+<div class="text-center container-fluid p-2">
+    <h1 style="font-family: fantasy;">
+        Restaurants
+    </h1>
+
+    <table id="myTable" class="cell-border hover compact order-column no-footer nowrap" style="border-color: black">
+        <thead>
+            <tr>
+                <th style="text-align:center">Movie ID</th>
+                <th style="text-align:center">Movie Rank</th>
+                <th style="text-align:center">Movie Name</th>
+                <th style="text-align:center">Movie Title</th>
+                <th style="text-align:center">Movie Year</th>
+                <th style="text-align:center">Movie Image</th>
+                <th style="text-align:center">Movie IMDB Rating</th>
+                <th style="text-align:center">Movie IMDB Rating Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Item item in tvshows.Items)
+                {
+                        <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Rank</td>
+                        <td>@item.Title</td>
+                        <td>@item.FullTitle</td>
+                        <td>@item.Year</td>
+                        <td>@item.Image</td>
+                        <td>@item.ImDbRating</td>
+                        <td>@item.ImDbRatingCount</td>
+                        </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        //        debugger
+        $('#myTable').DataTable({
+            //            stateSave: true
+
+        });
+    });
+</script>
