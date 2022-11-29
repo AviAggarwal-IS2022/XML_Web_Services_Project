@@ -1,0 +1,61 @@
+﻿@page
+@using NeighborhoodFriend_RestaurantData
+@model XML_Web_Services_Project.Pages.NFFRecRestModel
+@{
+    ViewData["Title"] = "Recreation Places";
+    List<RestaurantData> restaurants = (List<RestaurantData>)ViewData["RestDatas"];
+}
+<div class="container-fluid p-0">
+    <img src="https://images.unsplash.com/photo-1634827022899-e2abcd96f837?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Neighborhood Friend" class="img-responsive w-100" height="500px">
+    <div class="carousel-caption" style="top:13%; height:300px">
+        <h1 style="font-size:4rem; color:lightcyan">Neighborhood Friend</h1>
+        <p><strong> Explore your new Home </strong></p>
+    </div>
+</div>
+
+<div class="text-center">
+    <h1>Restaurants in the Vicinity of Recreation Facilities</h1>
+
+    <table id="myTable" class="table-bordered" style="border-color: black">
+        <thead>
+            <tr>
+                <th style="text-align:center">Restaurant Name</th>
+                <th style="text-align:center">Address</th>
+                <th style="text-align:center">City</th>
+                <th style="text-align:center">State</th>
+                <th style="text-align:center">Postal Code</th>
+                <th style="text-align:center">Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (RestaurantData RestaurantData in restaurants)
+                {
+                    <tr>
+                        <td>@RestaurantData.BusinessName</td>
+                        <td>@RestaurantData.Address</td>
+                        <td>@RestaurantData.City</td>
+                        <td>@RestaurantData.State</td>
+                        <td>@RestaurantData.PostalCode</td>
+                        <td>@RestaurantData.PhoneNumber</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        //        debugger
+        $('#myTable').DataTable({
+            //            stateSave: true
+
+        });
+    });
+</script>
+
