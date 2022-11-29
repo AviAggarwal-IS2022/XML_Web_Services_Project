@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -16,7 +16,7 @@
         public string IncidentNo { get; set; }
 
         [JsonProperty("date_reported", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? DateReported { get; set; }
+        public DateTime? DateReported { get; set; }
 
         [JsonProperty("date_from")]
         public DateTimeOffset DateFrom { get; set; }
