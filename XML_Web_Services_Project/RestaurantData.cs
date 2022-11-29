@@ -37,8 +37,17 @@
         [JsonProperty("longitude")]
         public string Longitude { get; set; }
 
-        [JsonProperty("license_status")]
-        public LicenseStatus LicenseStatus { get; set; }
+        private LicenseStatus licenseStatus;
+
+        public LicenseStatus GetLicenseStatus()
+        {
+            return licenseStatus;
+        }
+
+        public void SetLicenseStatus(LicenseStatus value)
+        {
+            licenseStatus = value;
+        }
 
         [JsonProperty("recordnum_insp")]
         public string RecordnumInsp { get; set; }

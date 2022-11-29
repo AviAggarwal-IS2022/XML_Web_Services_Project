@@ -7,19 +7,19 @@
 }
 
 
-<div class="text-center">
+<div class="text-center container-fluid p-2">
 
-    <h1>Crime Incidents</h1>
+    <h1 style="font-family: fantasy;">Crime Incidents</h1>
 
-    <table id="myTable" class="table-bordered" style="border-color: black">
+    <table id="myTable" class="cell-border hover compact order-column no-footer nowrap" style="border-color: black">
         <thead>
             <tr>
-                <th style="text-align:center">Incident No.</th>
+               
                 <th style="text-align:center">Date Reported</th>
                 <th style="text-align:center">Status</th>
                 <th style="text-align:center">Offence</th>
                 <th style="text-align:center">Location</th>
-                <th style="text-align:center">ZIP</th>
+                <th style="text-align:center">ZIP Code</th>
                 <th style="text-align:center">Neighborhood</th>
             </tr>
         </thead>
@@ -28,9 +28,9 @@
                 foreach (CrimeData CrimeData in crimes)
                 {
                     <tr>
-                        <td>@CrimeData.IncidentNo</td>
+               
                         <td>@CrimeData.DateReported</td>
-                        <td>@CrimeData.Clsd</td>
+                        <td>@CrimeData.GetClsd()</td>
                         <td>@CrimeData.Offense</td>
                         <td>@CrimeData.Location</td>
                         <td>@CrimeData.Zip</td>

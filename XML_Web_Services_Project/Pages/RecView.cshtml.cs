@@ -37,7 +37,7 @@ namespace XML_Web_Services_Project.Pages
                 IList<string> validationEvents = new List<string>();
                 if (RecreationDataJsonArray.IsValid(RecreationDataSchema, out validationEvents))
                 {
-                    recreations = RecreationData.FromJson(jsonString);
+                    recreationFacilityList = RecreationData.FromJson(jsonString);
                 }
                 else
                 {
@@ -46,7 +46,7 @@ namespace XML_Web_Services_Project.Pages
                         Console.WriteLine(evt);
                     }
                 }
-                recreations = RecreationData.FromJson(jsonString);
+                recreationFacilityList = RecreationData.FromJson(jsonString);
             }
             return recreationFacilityList;
         }

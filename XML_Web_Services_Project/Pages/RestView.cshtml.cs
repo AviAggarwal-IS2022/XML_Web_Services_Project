@@ -35,7 +35,7 @@ namespace XML_Web_Services_Project.Pages
                 IList<string> validationEvents = new List<string>();
                 if (RestaurantDataJsonArray.IsValid(RestaurantDataSchema, out validationEvents))
                 {
-                    restaurants = RestaurantData.FromJson(jsonString);
+                    restaurantsList = RestaurantData.FromJson(jsonString);
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace XML_Web_Services_Project.Pages
                     }
                 }
 
-                restaurants = RestaurantData.FromJson(jsonString);
+                restaurantsList = RestaurantData.FromJson(jsonString);
             }
             return restaurantsList;
         }
