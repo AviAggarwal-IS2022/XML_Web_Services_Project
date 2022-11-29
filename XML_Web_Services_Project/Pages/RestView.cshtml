@@ -1,0 +1,54 @@
+﻿@page
+@using NeighborhoodFriend_RestaurantData
+@model XML_Web_Services_Project.Pages.RestViewModel
+@{
+    ViewData["Title"] = "Restaurant Data";
+    List<RestaurantData> restaurants = (List<RestaurantData>)ViewData["RestDatas"];
+}
+
+<div class="text-center container-fluid p-2">
+    <h1 style="font-family: fantasy;">
+        Restaurants
+    </h1>
+
+    <table id="myTable" class="cell-border hover compact order-column no-footer nowrap" style="border-color: black">
+        <thead>
+            <tr>
+                
+                <th style="text-align:center">Restaurant Name</th>
+                <th style="text-align:center">Address</th>
+                <th style="text-align:center">ZIP Code</th>
+                <th style="text-align:center">Phone Number</th>
+                <th style="text-align:center">Neighborhood</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (RestaurantData RestaurantData in restaurants)
+                {
+                    <tr>
+                        <td>@RestaurantData.BusinessName</td>
+                        <td>@RestaurantData.Address</td>
+                        <td>@RestaurantData.PostalCode</td>
+                        <td>@RestaurantData.PhoneNumber</td>
+                        <td>@RestaurantData.Neighborhood</td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        //        debugger
+        $('#myTable').DataTable({
+            //            stateSave: true
+
+        });
+    });
+</script>

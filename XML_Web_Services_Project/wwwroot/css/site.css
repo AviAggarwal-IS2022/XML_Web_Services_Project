@@ -15,4 +15,82 @@ html {
 
 body {
   margin-bottom: 60px;
+  padding-top: 70px;
+}
+
+.logo-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 0%;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+
+.flip-card {
+    background-color: transparent;
+    text-align:center;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+}
+
+
+.flip-card-inner {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+}
+
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+
+.flip-card-back {
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.button {
+    background-color: black ;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+}
+
+#content {
+    padding: 25% 25% 5%;
 }
