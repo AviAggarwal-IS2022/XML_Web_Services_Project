@@ -17,11 +17,13 @@
 </head>
 <body>
     <header>
-        <nav class="navbar sticky-top navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black box-shadow">
+        <nav class="navbar navbar-expand-sm fixed-top position-fixed navbar-toggleable-sm navbar-dark bg-black box-shadow">
             <div class="container">
                 <a class="navbar-brand" href="/">
                     <div class="logo-image">
-                        <img src="~/Logo.jpeg" class="img-fluid">
+
+                        <img src="~/Logo.jpeg" class="img-fluid" alt="Logo of Neighbourhood Friend" />
+
                     </div>
                 </a>
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Neighborhood Friend</a>
@@ -54,8 +56,9 @@
     <footer class="border-top position-fixed footer text-muted bg-black">
         <div class="container">
             <div class="row">
-                <p class="text-white mb-1" style="text-align: center"> For further queries, reach out to us at customersupport&#x40neighborhoodfriend.com </p>
+                <p class="text-white mb-1" style="text-align: center"> For any further queries or feedback, please <a href="/ContactUs">write to us.</a>
             </div>
+        </div>
     </footer>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

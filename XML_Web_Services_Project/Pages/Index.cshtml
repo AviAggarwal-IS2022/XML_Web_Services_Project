@@ -3,10 +3,73 @@
 @{
     ViewData["Title"] = "Home page";
 }
+
+
 <div class="container-fluid p-0">
-    <img src="https://images.unsplash.com/photo-1634827022899-e2abcd96f837?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Neighborhood Friend" class="img-responsive w-100" height="500px">
+
+    <img src="https://images.unsplash.com/photo-1634827022899-e2abcd96f837?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Image showing overview of a city ater sunset" class="img-responsive w-100" height="500px" />
+
     <div class="carousel-caption" style="top:13%; height:300px">
         <h1 style="font-size:4rem; color:lightcyan">Neighborhood Friend</h1>
         <p><strong> Explore your new Home </strong></p>
     </div>
+</div>
+
+<div class="container mt-3 text-center">
+    <P style="font-size:3rem; color:black">Ready to Explore?</P>
+</div>
+
+<div class="container mb-5 mt-4">
+    <div class="row">
+        <div class="col-4">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1625943912749-7f75dc0d7a01?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHJlc3RhdXJhbnR8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60 " alt="Picture of a food in a Restaurant" style="width:300px;height:300px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <br />
+                        <br />
+                        <h2>Wanna Grab a Bite?</h2>
+                        <h4>Explore Restaurants near you</h4>
+                        <a class="btn btn-primary bg-white text-dark" href="/RestaurantSearch" role="button">Search by ZIP</a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="col-4">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80 " alt="Picture of a swimming pool" style="width:300px;height:300px;">
+                    </div>
+                    <div class="flip-card-back ">
+                        <br />
+                        <h2>Looking for a Recreational Weekend? </h2>
+                        <h4>Dive into your Options!</h4>
+                        <a class="btn btn-primary bg-white text-dark" href="/RecreationSearch" role="button">Search by ZIP</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-4">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="https://images.unsplash.com/photo-1624968683033-c31c672453e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80 " alt="Picture of blood" style="width:300px;height:300px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <br />
+                        <br />
+                        <h2>Worried about Safety? </h2>
+                        <h4>Check the Crime Rate</h4>
+                        <a class="btn btn-primary bg-white text-dark" href="/CrimeSearch" role="button">Search by ZIP</a>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    
 </div>
