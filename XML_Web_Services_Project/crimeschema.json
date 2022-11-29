@@ -1,0 +1,344 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/CrimeElement"
+  },
+  "definitions": {
+    "CrimeElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instanceid": {
+          "type": "string"
+        },
+        "incident_no": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100000000000
+        },
+        "date_reported": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "date_from": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "date_to": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "clsd": {
+          "$ref": "#/definitions/Clsd"
+        },
+        "ucr": {
+          "type": "string",
+          "format": "integer"
+        },
+        "dst": {
+          "$ref": "#/definitions/DstUnion"
+        },
+        "beat": {
+          "type": "string"
+        },
+        "offense": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "theft_code": {
+          "$ref": "#/definitions/TheftCode"
+        },
+        "side": {
+          "$ref": "#/definitions/Side"
+        },
+        "hate_bias": {
+          "$ref": "#/definitions/HateBias"
+        },
+        "dayofweek": {
+          "$ref": "#/definitions/Dayofweek"
+        },
+        "rpt_area": {
+          "type": "string"
+        },
+        "cpd_neighborhood": {
+          "type": "string"
+        },
+        "weapons": {
+          "$ref": "#/definitions/Weapons"
+        },
+        "date_of_clearance": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "hour_from": {
+          "type": "string"
+        },
+        "hour_to": {
+          "type": "string"
+        },
+        "address_x": {
+          "type": "string"
+        },
+        "longitude_x": {
+          "type": "string"
+        },
+        "latitude_x": {
+          "type": "string"
+        },
+        "victim_age": {
+          "$ref": "#/definitions/Age"
+        },
+        "victim_race": {
+          "$ref": "#/definitions/Race"
+        },
+        "victim_ethnicity": {
+          "$ref": "#/definitions/Ethnicity"
+        },
+        "victim_gender": {
+          "$ref": "#/definitions/Gender"
+        },
+        "suspect_age": {
+          "$ref": "#/definitions/Age"
+        },
+        "suspect_race": {
+          "$ref": "#/definitions/Race"
+        },
+        "suspect_ethnicity": {
+          "$ref": "#/definitions/Ethnicity"
+        },
+        "suspect_gender": {
+          "$ref": "#/definitions/Gender"
+        },
+        "totalnumbervictims": {
+          "type": "string",
+          "format": "integer"
+        },
+        "totalsuspects": {
+          "type": "string",
+          "format": "integer"
+        },
+        "ucr_group": {
+          "$ref": "#/definitions/UcrGroup"
+        },
+        "zip": {
+          "type": "string",
+          "format": "integer"
+        },
+        "community_council_neighborhood": {
+          "type": "string"
+        },
+        "sna_neighborhood": {
+          "type": "string"
+        },
+        "floor": {
+          "$ref": "#/definitions/Floor"
+        },
+        "opening": {
+          "$ref": "#/definitions/Opening"
+        }
+      },
+      "required": [
+        "community_council_neighborhood",
+        "date_from",
+        "dst",
+        "hate_bias",
+        "hour_from",
+        "incident_no",
+        "instanceid",
+        "location",
+        "sna_neighborhood",
+        "suspect_age",
+        "victim_age",
+        "weapons",
+        "zip"
+      ],
+      "title": "CrimeElement"
+    },
+    "DstUnion": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/DstEnum"
+        },
+        {
+          "type": "string",
+          "format": "integer"
+        }
+      ],
+      "title": "DstUnion"
+    },
+    "Clsd": {
+      "type": "string",
+      "enum": [
+        "Z--EARLY CLOSED",
+        "I--INVESTIGATION PENDING",
+        "H--WARRANT ISSUED",
+        "F--CLEARED BY ARREST - ADULT",
+        "J--CLOSED",
+        "K--UNFOUNDED",
+        "G--CLEARED BY ARREST - JUVENILE",
+        "B--PROSECUTION DECLINED",
+        "D--VICTIM REFUSED TO COOPERATE"
+      ],
+      "title": "Clsd"
+    },
+    "Dayofweek": {
+      "type": "string",
+      "enum": [
+        "TUESDAY",
+        "SUNDAY",
+        "THURSDAY",
+        "SATURDAY",
+        "MONDAY",
+        "WEDNESDAY",
+        "FRIDAY"
+      ],
+      "title": "Dayofweek"
+    },
+    "DstEnum": {
+      "type": "string",
+      "enum": [
+        "CENTRAL BUSINESS"
+      ],
+      "title": "DstEnum"
+    },
+    "Floor": {
+      "type": "string",
+      "enum": [
+        "2 - FIRST FLOOR",
+        "1 - BASEMENT",
+        "5 - UNKNOWN",
+        "3 - SECOND FLOOR",
+        "4 - OTHER"
+      ],
+      "title": "Floor"
+    },
+    "HateBias": {
+      "type": "string",
+      "enum": [
+        "N--NO BIAS/NOT APPLICABLE",
+        "88--DOMESTIC VIOLENCE",
+        "50--OTHER BIAS INCIDENT (E.G. ANTI-AIDS VICTIM)",
+        "89--GANG RELATED"
+      ],
+      "title": "HateBias"
+    },
+    "Opening": {
+      "type": "string",
+      "enum": [
+        "1 - DOOR",
+        "2 - WINDOW",
+        "5 - OTHER",
+        "3 - GARAGE"
+      ],
+      "title": "Opening"
+    },
+    "Side": {
+      "type": "string",
+      "enum": [
+        "1 - FRONT",
+        "3 - REAR",
+        "???",
+        "4 - ROOF",
+        "2 - SIDE",
+        "5 - OTHER",
+        "6 - UNKNOWN"
+      ],
+      "title": "Side"
+    },
+    "Age": {
+      "type": "string",
+      "enum": [
+        "51-60",
+        "26-30",
+        "61-70",
+        "18-25",
+        "41-50",
+        "31-40",
+        "OVER 70",
+        "UNDER 18",
+        "UNKNOWN",
+        "JUVENILE (UNDER 18)",
+        "ADULT (18+)"
+      ],
+      "title": "Age"
+    },
+    "Ethnicity": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "NOT OF HISPANIC ORIG",
+        "HISPANIC ORIGIN"
+      ],
+      "title": "Ethnicity"
+    },
+    "Gender": {
+      "type": "string",
+      "enum": [
+        "MALE",
+        "FEMALE",
+        "UNKNOWN"
+      ],
+      "title": "Gender"
+    },
+    "Race": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "WHITE",
+        "BLACK",
+        "AMERICAN INDIAN/ALAS",
+        "ASIAN/PACIFIC ISLAND"
+      ],
+      "title": "Race"
+    },
+    "TheftCode": {
+      "type": "string",
+      "enum": [
+        "24O-MOTOR VEHICLE THEFT",
+        "23F-THEFT FROM MOTOR VEHICLE",
+        "23G-THEFT OF MOTOR VEHICLE PARTS OR ACCESSORIES",
+        "23H-ALL OTHER LARCENY",
+        "23C-SHOPLIFTING",
+        "23D-THEFT FROM BUILDING",
+        "23B-PURSE-SNATCHING",
+        "24I-THEFT OF LICENSE PLATE",
+        "23A-POCKET-PICKING"
+      ],
+      "title": "TheftCode"
+    },
+    "UcrGroup": {
+      "type": "string",
+      "enum": [
+        "THEFT",
+        "PART 2 MINOR",
+        "BURGLARY/BREAKING ENTERING",
+        "ROBBERY",
+        "UNAUTHORIZED USE",
+        "AGGRAVATED ASSAULTS",
+        "RAPE",
+        "HOMICIDE"
+      ],
+      "title": "UcrGroup"
+    },
+    "Weapons": {
+      "type": "string",
+      "enum": [
+        "99 - NONE",
+        "11 - FIREARM (TYPE NOT STATED)",
+        "80 - OTHER WEAPON",
+        "40 - PERSONAL WEAPONS (HANDS, FEET, TEETH, ETC.)",
+        "30 - BLUNT OBJECT (CLUB, HAMMER, ETC.)",
+        "12 - HANDGUN",
+        "U - UNKNOWN",
+        "20 - KNIFE/CUTTING INSTRUMENT (ICEPICK, AX, ETC.)",
+        "15B - SEMI-AUTOMATIC ASSAULT FIREARM",
+        "85 - ASPHYXIATION (BY DROWNING, STRANGULATION, SUFFOCATION)"
+      ],
+      "title": "Weapons"
+    }
+  }
+}
+

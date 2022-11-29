@@ -9,34 +9,45 @@
 
     public partial class CrimeData
     {
+        [JsonProperty("instanceid")]
+        public string Instanceid { get; set; }
+
         [JsonProperty("incident_no")]
         public string IncidentNo { get; set; }
 
         [JsonProperty("date_reported", NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset? DateReported { get; set; }
 
+        [JsonProperty("date_from")]
+        public DateTimeOffset DateFrom { get; set; }
+
+        [JsonProperty("date_to", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? DateTo { get; set; }
+
         [JsonProperty("clsd", NullValueHandling = NullValueHandling.Ignore)]
         public Clsd? Clsd { get; set; }
 
-        [JsonProperty("ucr")]
+        [JsonProperty("ucr", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
-        public long Ucr { get; set; }
+        public long? Ucr { get; set; }
 
-        [JsonProperty("dst", NullValueHandling = NullValueHandling.Ignore)]
-        public DstUnion? Dst { get; set; }
+        [JsonProperty("dst")]
+        public DstUnion Dst { get; set; }
 
         [JsonProperty("beat", NullValueHandling = NullValueHandling.Ignore)]
-        [JsonConverter(typeof(ParseStringConverter))]
-        public long? Beat { get; set; }
+        public string Beat { get; set; }
 
-        [JsonProperty("offense")]
+        [JsonProperty("offense", NullValueHandling = NullValueHandling.Ignore)]
         public string Offense { get; set; }
 
-        [JsonProperty("location", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("location")]
         public string Location { get; set; }
 
         [JsonProperty("theft_code", NullValueHandling = NullValueHandling.Ignore)]
         public TheftCode? TheftCode { get; set; }
+
+        [JsonProperty("side", NullValueHandling = NullValueHandling.Ignore)]
+        public Side? Side { get; set; }
 
         [JsonProperty("hate_bias")]
         public HateBias HateBias { get; set; }
@@ -50,10 +61,22 @@
         [JsonProperty("cpd_neighborhood", NullValueHandling = NullValueHandling.Ignore)]
         public string CpdNeighborhood { get; set; }
 
-        [JsonProperty("weapons", NullValueHandling = NullValueHandling.Ignore)]
-        public Weapons? Weapons { get; set; }
+        private Weapons weapons;
 
-        [JsonProperty("hour_from", NullValueHandling = NullValueHandling.Ignore)]
+        public Weapons GetWeapons()
+        {
+            return weapons;
+        }
+
+        public void SetWeapons(Weapons value)
+        {
+            weapons = value;
+        }
+
+        [JsonProperty("date_of_clearance", NullValueHandling = NullValueHandling.Ignore)]
+        public DateTimeOffset? DateOfClearance { get; set; }
+
+        [JsonProperty("hour_from")]
         public string HourFrom { get; set; }
 
         [JsonProperty("hour_to", NullValueHandling = NullValueHandling.Ignore)]
@@ -83,6 +106,9 @@
         [JsonProperty("suspect_age")]
         public Age SuspectAge { get; set; }
 
+        [JsonProperty("suspect_race", NullValueHandling = NullValueHandling.Ignore)]
+        public Race? SuspectRace { get; set; }
+
         [JsonProperty("suspect_ethnicity", NullValueHandling = NullValueHandling.Ignore)]
         public Ethnicity? SuspectEthnicity { get; set; }
 
@@ -97,12 +123,12 @@
         [JsonConverter(typeof(ParseStringConverter))]
         public long? Totalsuspects { get; set; }
 
-        [JsonProperty("ucr_group")]
-        public UcrGroup UcrGroup { get; set; }
+        [JsonProperty("ucr_group", NullValueHandling = NullValueHandling.Ignore)]
+        public UcrGroup? UcrGroup { get; set; }
 
-        [JsonProperty("zip", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("zip")]
         [JsonConverter(typeof(ParseStringConverter))]
-        public long? Zip { get; set; }
+        public long Zip { get; set; }
 
         [JsonProperty("community_council_neighborhood")]
         public string CommunityCouncilNeighborhood { get; set; }
@@ -110,46 +136,49 @@
         [JsonProperty("sna_neighborhood")]
         public string SnaNeighborhood { get; set; }
 
-        [JsonProperty("date_of_clearance", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? DateOfClearance { get; set; }
-
         [JsonProperty("floor", NullValueHandling = NullValueHandling.Ignore)]
         public Floor? Floor { get; set; }
 
-        [JsonProperty("side", NullValueHandling = NullValueHandling.Ignore)]
-        public Side? Side { get; set; }
+        private Opening? opening;
 
-        [JsonProperty("opening", NullValueHandling = NullValueHandling.Ignore)]
-        public Opening? Opening { get; set; }
+        public Opening? GetOpening()
+        {
+            return opening;
+        }
+
+        public void SetOpening(Opening? value)
+        {
+            opening = value;
+        }
     }
 
     public enum Clsd { BProsecutionDeclined, DVictimRefusedToCooperate, FClearedByArrestAdult, GClearedByArrestJuvenile, HWarrantIssued, IInvestigationPending, JClosed, KUnfounded, ZEarlyClosed };
 
     public enum Dayofweek { Friday, Monday, Saturday, Sunday, Thursday, Tuesday, Wednesday };
 
-    public enum DstEnum { CentralBusiness, Other };
+    public enum DstEnum { CentralBusiness };
 
     public enum Floor { The1Basement, The2FirstFloor, The3SecondFloor, The4Other, The5Unknown };
 
-    public enum HateBias { NNoBiasNotApplicable, The11AntiWhite, The13AntiAmericanIndianAlaskanNative, The23AntiProtestant, The88DomesticViolence, The89GangRelated };
+    public enum HateBias { NNoBiasNotApplicable, The50OtherBiasIncidentEGAntiAidsVictim, The88DomesticViolence, The89GangRelated };
 
-    public enum Opening { The1Door, The2Window, The3Garage, The5Other, The6Unknown };
+    public enum Opening { The1Door, The2Window, The3Garage, The5Other };
 
-    public enum Side { The1Front, The2Side, The3Rear, The4Roof, The6Unknown };
+    public enum Side { Empty, The1Front, The2Side, The3Rear, The4Roof, The5Other, The6Unknown };
 
-    public enum Age { Adult18, Over70, The1825, The2630, The3140, The4150, The5160, The6170, Under18, Unknown };
+    public enum Age { Adult18, JuvenileUnder18, Over70, The1825, The2630, The3140, The4150, The5160, The6170, Under18, Unknown };
 
     public enum Ethnicity { HispanicOrigin, NotOfHispanicOrig, Unknown };
 
     public enum Gender { Female, Male, Unknown };
 
-    public enum Race { AsianPacificIsland, Black, Unknown, White };
+    public enum Race { AmericanIndianAlas, AsianPacificIsland, Black, Unknown, White };
 
-    public enum TheftCode { The23APocketPicking, The23BPurseSnatching, The23CShoplifting, The23DTheftFromBuilding, The23ETheftFromCoinOperatedMachineOrDevice, The23FTheftFromMotorVehicle, The23GTheftOfMotorVehiclePartsOrAccessories, The23HAllOtherLarceny, The24ITheftOfLicensePlate, The24OMotorVehicleTheft };
+    public enum TheftCode { The23APocketPicking, The23BPurseSnatching, The23CShoplifting, The23DTheftFromBuilding, The23FTheftFromMotorVehicle, The23GTheftOfMotorVehiclePartsOrAccessories, The23HAllOtherLarceny, The24ITheftOfLicensePlate, The24OMotorVehicleTheft };
 
     public enum UcrGroup { AggravatedAssaults, BurglaryBreakingEntering, Homicide, Part2Minor, Rape, Robbery, Theft, UnauthorizedUse };
 
-    public enum Weapons { The11FirearmTypeNotStated, The12Handgun, The13Rifle, The14Shotgun, The15OtherFirearm, The16ImitationFirearm, The18BbAndPelletGuns, The20KnifeCuttingInstrumentIcepickAxEtc, The30BluntObjectClubHammerEtc, The35MotorVehicleWhenUsedAsWeapon, The40PersonalWeaponsHandsFeetTeethEtc, The80OtherWeapon, The99None, UUnknown };
+    public enum Weapons { The11FirearmTypeNotStated, The12Handgun, The15BSemiAutomaticAssaultFirearm, The20KnifeCuttingInstrumentIcepickAxEtc, The30BluntObjectClubHammerEtc, The40PersonalWeaponsHandsFeetTeethEtc, The80OtherWeapon, The85AsphyxiationByDrowningStrangulationSuffocation, The99None, UUnknown };
 
     public partial struct DstUnion
     {
@@ -196,45 +225,6 @@
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
-    }
-
-    internal class ParseStringConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(long) || t == typeof(long?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-
-            try
-            {
-                long l;
-                if (Int64.TryParse(value, out l))
-                {
-                    return l;
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Cannot unmarshal type long");
-            }
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (long)untypedValue;
-            serializer.Serialize(writer, value.ToString());
-            return;
-        }
-
-        public static readonly ParseStringConverter Singleton = new ParseStringConverter();
     }
 
     internal class ClsdConverter : JsonConverter
@@ -390,12 +380,9 @@
                 case JsonToken.String:
                 case JsonToken.Date:
                     var stringValue = serializer.Deserialize<string>(reader);
-                    switch (stringValue)
+                    if (stringValue == "CENTRAL BUSINESS")
                     {
-                        case "CENTRAL BUSINESS":
-                            return new DstUnion { Enum = DstEnum.CentralBusiness };
-                        case "OTHER":
-                            return new DstUnion { Enum = DstEnum.Other };
+                        return new DstUnion { Enum = DstEnum.CentralBusiness };
                     }
                     long l;
                     if (Int64.TryParse(stringValue, out l))
@@ -412,14 +399,10 @@
             var value = (DstUnion)untypedValue;
             if (value.Enum != null)
             {
-                switch (value.Enum)
+                if (value.Enum == DstEnum.CentralBusiness)
                 {
-                    case DstEnum.CentralBusiness:
-                        serializer.Serialize(writer, "CENTRAL BUSINESS");
-                        return;
-                    case DstEnum.Other:
-                        serializer.Serialize(writer, "OTHER");
-                        return;
+                    serializer.Serialize(writer, "CENTRAL BUSINESS");
+                    return;
                 }
             }
             if (value.Integer != null)
@@ -441,12 +424,9 @@
         {
             if (reader.TokenType == JsonToken.Null) return null;
             var value = serializer.Deserialize<string>(reader);
-            switch (value)
+            if (value == "CENTRAL BUSINESS")
             {
-                case "CENTRAL BUSINESS":
-                    return DstEnum.CentralBusiness;
-                case "OTHER":
-                    return DstEnum.Other;
+                return DstEnum.CentralBusiness;
             }
             throw new Exception("Cannot unmarshal type DstEnum");
         }
@@ -459,14 +439,10 @@
                 return;
             }
             var value = (DstEnum)untypedValue;
-            switch (value)
+            if (value == DstEnum.CentralBusiness)
             {
-                case DstEnum.CentralBusiness:
-                    serializer.Serialize(writer, "CENTRAL BUSINESS");
-                    return;
-                case DstEnum.Other:
-                    serializer.Serialize(writer, "OTHER");
-                    return;
+                serializer.Serialize(writer, "CENTRAL BUSINESS");
+                return;
             }
             throw new Exception("Cannot marshal type DstEnum");
         }
@@ -540,12 +516,8 @@
             var value = serializer.Deserialize<string>(reader);
             switch (value)
             {
-                case "11--ANTI-WHITE":
-                    return HateBias.The11AntiWhite;
-                case "13--ANTI-AMERICAN INDIAN/ALASKAN NATIVE":
-                    return HateBias.The13AntiAmericanIndianAlaskanNative;
-                case "23--ANTI-PROTESTANT":
-                    return HateBias.The23AntiProtestant;
+                case "50--OTHER BIAS INCIDENT (E.G. ANTI-AIDS VICTIM)":
+                    return HateBias.The50OtherBiasIncidentEGAntiAidsVictim;
                 case "88--DOMESTIC VIOLENCE":
                     return HateBias.The88DomesticViolence;
                 case "89--GANG RELATED":
@@ -566,14 +538,8 @@
             var value = (HateBias)untypedValue;
             switch (value)
             {
-                case HateBias.The11AntiWhite:
-                    serializer.Serialize(writer, "11--ANTI-WHITE");
-                    return;
-                case HateBias.The13AntiAmericanIndianAlaskanNative:
-                    serializer.Serialize(writer, "13--ANTI-AMERICAN INDIAN/ALASKAN NATIVE");
-                    return;
-                case HateBias.The23AntiProtestant:
-                    serializer.Serialize(writer, "23--ANTI-PROTESTANT");
+                case HateBias.The50OtherBiasIncidentEGAntiAidsVictim:
+                    serializer.Serialize(writer, "50--OTHER BIAS INCIDENT (E.G. ANTI-AIDS VICTIM)");
                     return;
                 case HateBias.The88DomesticViolence:
                     serializer.Serialize(writer, "88--DOMESTIC VIOLENCE");
@@ -609,8 +575,6 @@
                     return Opening.The3Garage;
                 case "5 - OTHER":
                     return Opening.The5Other;
-                case "6 - UNKNOWN":
-                    return Opening.The6Unknown;
             }
             throw new Exception("Cannot unmarshal type Opening");
         }
@@ -637,9 +601,6 @@
                 case Opening.The5Other:
                     serializer.Serialize(writer, "5 - OTHER");
                     return;
-                case Opening.The6Unknown:
-                    serializer.Serialize(writer, "6 - UNKNOWN");
-                    return;
             }
             throw new Exception("Cannot marshal type Opening");
         }
@@ -665,8 +626,12 @@
                     return Side.The3Rear;
                 case "4 - ROOF":
                     return Side.The4Roof;
+                case "5 - OTHER":
+                    return Side.The5Other;
                 case "6 - UNKNOWN":
                     return Side.The6Unknown;
+                case "???":
+                    return Side.Empty;
             }
             throw new Exception("Cannot unmarshal type Side");
         }
@@ -693,8 +658,14 @@
                 case Side.The4Roof:
                     serializer.Serialize(writer, "4 - ROOF");
                     return;
+                case Side.The5Other:
+                    serializer.Serialize(writer, "5 - OTHER");
+                    return;
                 case Side.The6Unknown:
                     serializer.Serialize(writer, "6 - UNKNOWN");
+                    return;
+                case Side.Empty:
+                    serializer.Serialize(writer, "???");
                     return;
             }
             throw new Exception("Cannot marshal type Side");
@@ -727,6 +698,8 @@
                     return Age.The6170;
                 case "ADULT (18+)":
                     return Age.Adult18;
+                case "JUVENILE (UNDER 18)":
+                    return Age.JuvenileUnder18;
                 case "OVER 70":
                     return Age.Over70;
                 case "UNDER 18":
@@ -767,6 +740,9 @@
                     return;
                 case Age.Adult18:
                     serializer.Serialize(writer, "ADULT (18+)");
+                    return;
+                case Age.JuvenileUnder18:
+                    serializer.Serialize(writer, "JUVENILE (UNDER 18)");
                     return;
                 case Age.Over70:
                     serializer.Serialize(writer, "OVER 70");
@@ -884,26 +860,20 @@
         {
             if (reader.TokenType == JsonToken.Null) return null;
             var value = serializer.Deserialize<string>(reader);
-            try
+            switch (value)
             {
-                switch (value)
-                {
-                    case "ASIAN/PACIFIC ISLAND":
-                        return Race.AsianPacificIsland;
-                    case "BLACK":
-                        return Race.Black;
-                    case "UNKNOWN":
-                        return Race.Unknown;
-                    case "WHITE":
-                        return Race.White;
-                    default:
-                        return ("Cannot Identify Race");
-                }
+                case "AMERICAN INDIAN/ALAS":
+                    return Race.AmericanIndianAlas;
+                case "ASIAN/PACIFIC ISLAND":
+                    return Race.AsianPacificIsland;
+                case "BLACK":
+                    return Race.Black;
+                case "UNKNOWN":
+                    return Race.Unknown;
+                case "WHITE":
+                    return Race.White;
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Cannot unmarshal type Race");
-            }
+            throw new Exception("Cannot unmarshal type Race");
         }
 
         public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
@@ -916,6 +886,9 @@
             var value = (Race)untypedValue;
             switch (value)
             {
+                case Race.AmericanIndianAlas:
+                    serializer.Serialize(writer, "AMERICAN INDIAN/ALAS");
+                    return;
                 case Race.AsianPacificIsland:
                     serializer.Serialize(writer, "ASIAN/PACIFIC ISLAND");
                     return;
@@ -928,9 +901,6 @@
                 case Race.White:
                     serializer.Serialize(writer, "WHITE");
                     return;
-                    /*default:
-                        serializer.Serialize(writer, "UNKNOWN");
-                        return;*/
             }
             throw new Exception("Cannot marshal type Race");
         }
@@ -956,8 +926,6 @@
                     return TheftCode.The23CShoplifting;
                 case "23D-THEFT FROM BUILDING":
                     return TheftCode.The23DTheftFromBuilding;
-                case "23E-THEFT FROM COIN-OPERATED MACHINE OR DEVICE":
-                    return TheftCode.The23ETheftFromCoinOperatedMachineOrDevice;
                 case "23F-THEFT FROM MOTOR VEHICLE":
                     return TheftCode.The23FTheftFromMotorVehicle;
                 case "23G-THEFT OF MOTOR VEHICLE PARTS OR ACCESSORIES":
@@ -994,9 +962,6 @@
                 case TheftCode.The23DTheftFromBuilding:
                     serializer.Serialize(writer, "23D-THEFT FROM BUILDING");
                     return;
-                case TheftCode.The23ETheftFromCoinOperatedMachineOrDevice:
-                    serializer.Serialize(writer, "23E-THEFT FROM COIN-OPERATED MACHINE OR DEVICE");
-                    return;
                 case TheftCode.The23FTheftFromMotorVehicle:
                     serializer.Serialize(writer, "23F-THEFT FROM MOTOR VEHICLE");
                     return;
@@ -1017,6 +982,37 @@
         }
 
         public static readonly TheftCodeConverter Singleton = new TheftCodeConverter();
+    }
+
+    internal class ParseStringConverter : JsonConverter
+    {
+        public override bool CanConvert(Type t) => t == typeof(long) || t == typeof(long?);
+
+        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null) return null;
+            var value = serializer.Deserialize<string>(reader);
+            long l;
+            if (Int64.TryParse(value, out l))
+            {
+                return l;
+            }
+            throw new Exception("Cannot unmarshal type long");
+        }
+
+        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
+        {
+            if (untypedValue == null)
+            {
+                serializer.Serialize(writer, null);
+                return;
+            }
+            var value = (long)untypedValue;
+            serializer.Serialize(writer, value.ToString());
+            return;
+        }
+
+        public static readonly ParseStringConverter Singleton = new ParseStringConverter();
     }
 
     internal class UcrGroupConverter : JsonConverter
@@ -1104,26 +1100,18 @@
                     return Weapons.The11FirearmTypeNotStated;
                 case "12 - HANDGUN":
                     return Weapons.The12Handgun;
-                case "13 - RIFLE":
-                    return Weapons.The13Rifle;
-                case "14 - SHOTGUN":
-                    return Weapons.The14Shotgun;
-                case "15 - OTHER FIREARM":
-                    return Weapons.The15OtherFirearm;
-                case "16 - IMITATION FIREARM":
-                    return Weapons.The16ImitationFirearm;
-                case "18 - BB AND PELLET GUNS":
-                    return Weapons.The18BbAndPelletGuns;
+                case "15B - SEMI-AUTOMATIC ASSAULT FIREARM":
+                    return Weapons.The15BSemiAutomaticAssaultFirearm;
                 case "20 - KNIFE/CUTTING INSTRUMENT (ICEPICK, AX, ETC.)":
                     return Weapons.The20KnifeCuttingInstrumentIcepickAxEtc;
                 case "30 - BLUNT OBJECT (CLUB, HAMMER, ETC.)":
                     return Weapons.The30BluntObjectClubHammerEtc;
-                case "35 - MOTOR VEHICLE (WHEN USED AS WEAPON)":
-                    return Weapons.The35MotorVehicleWhenUsedAsWeapon;
                 case "40 - PERSONAL WEAPONS (HANDS, FEET, TEETH, ETC.)":
                     return Weapons.The40PersonalWeaponsHandsFeetTeethEtc;
                 case "80 - OTHER WEAPON":
                     return Weapons.The80OtherWeapon;
+                case "85 - ASPHYXIATION (BY DROWNING, STRANGULATION, SUFFOCATION)":
+                    return Weapons.The85AsphyxiationByDrowningStrangulationSuffocation;
                 case "99 - NONE":
                     return Weapons.The99None;
                 case "U - UNKNOWN":
@@ -1148,20 +1136,8 @@
                 case Weapons.The12Handgun:
                     serializer.Serialize(writer, "12 - HANDGUN");
                     return;
-                case Weapons.The13Rifle:
-                    serializer.Serialize(writer, "13 - RIFLE");
-                    return;
-                case Weapons.The14Shotgun:
-                    serializer.Serialize(writer, "14 - SHOTGUN");
-                    return;
-                case Weapons.The15OtherFirearm:
-                    serializer.Serialize(writer, "15 - OTHER FIREARM");
-                    return;
-                case Weapons.The16ImitationFirearm:
-                    serializer.Serialize(writer, "16 - IMITATION FIREARM");
-                    return;
-                case Weapons.The18BbAndPelletGuns:
-                    serializer.Serialize(writer, "18 - BB AND PELLET GUNS");
+                case Weapons.The15BSemiAutomaticAssaultFirearm:
+                    serializer.Serialize(writer, "15B - SEMI-AUTOMATIC ASSAULT FIREARM");
                     return;
                 case Weapons.The20KnifeCuttingInstrumentIcepickAxEtc:
                     serializer.Serialize(writer, "20 - KNIFE/CUTTING INSTRUMENT (ICEPICK, AX, ETC.)");
@@ -1169,14 +1145,14 @@
                 case Weapons.The30BluntObjectClubHammerEtc:
                     serializer.Serialize(writer, "30 - BLUNT OBJECT (CLUB, HAMMER, ETC.)");
                     return;
-                case Weapons.The35MotorVehicleWhenUsedAsWeapon:
-                    serializer.Serialize(writer, "35 - MOTOR VEHICLE (WHEN USED AS WEAPON)");
-                    return;
                 case Weapons.The40PersonalWeaponsHandsFeetTeethEtc:
                     serializer.Serialize(writer, "40 - PERSONAL WEAPONS (HANDS, FEET, TEETH, ETC.)");
                     return;
                 case Weapons.The80OtherWeapon:
                     serializer.Serialize(writer, "80 - OTHER WEAPON");
+                    return;
+                case Weapons.The85AsphyxiationByDrowningStrangulationSuffocation:
+                    serializer.Serialize(writer, "85 - ASPHYXIATION (BY DROWNING, STRANGULATION, SUFFOCATION)");
                     return;
                 case Weapons.The99None:
                     serializer.Serialize(writer, "99 - NONE");

@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NeighborhoodFriend_RecreationData;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 
 namespace XML_Web_Services_Project.Pages
 {
@@ -16,21 +18,37 @@ namespace XML_Web_Services_Project.Pages
         }
         public void OnGet()
         {
-            string project = "Neighborhood Friend";
+            string project = "Neighborhood Friend";            
+            List<RecreationData> recreationFacilityList = GetRecreationData();
+            ViewData["RecDatas"] = recreationFacilityList;
+        }
 
+        public List<RecreationData> GetRecreationData()
+        {
             var task = client.GetAsync("https://data.cincinnati-oh.gov/resource/vset-45gc.json");
             HttpResponseMessage result = task.Result;
-            List<RecreationData> recreations = new List<RecreationData>();
+            List<RecreationData> recreationFacilityList = new List<RecreationData>();
             if (result.IsSuccessStatusCode)
             {
                 Task<string> readString = result.Content.ReadAsStringAsync();
                 string jsonString = readString.Result;
-                recreations = RecreationData.FromJson(jsonString);
+                JSchema RecreationDataSchema = JSchema.Parse(System.IO.File.ReadAllText("recreationschema.json"));
+                JArray RecreationDataJsonArray = JArray.Parse(jsonString);
+                IList<string> validationEvents = new List<string>();
+                if (RecreationDataJsonArray.IsValid(RecreationDataSchema, out validationEvents))
+                {
+                    recreationFacilityList = RecreationData.FromJson(jsonString);
+                }
+                else
+                {
+                    foreach (string evt in validationEvents)
+                    {
+                        Console.WriteLine(evt);
+                    }
+                }
+                recreationFacilityList = RecreationData.FromJson(jsonString);
             }
-
-            ViewData["RecDatas"] = recreations;
+            return recreationFacilityList;
         }
     }
 }
-
-
