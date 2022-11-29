@@ -102,3 +102,9 @@ img {
     border-radius: 5px 5px 0 0;
     opacity:0.8;
 }
+
+#navbtn {
+    color: #0d0d0d;
+    background-color: #d8e0dd;
+    border-color: #131414;
+}
