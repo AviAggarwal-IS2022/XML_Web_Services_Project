@@ -1,0 +1,56 @@
+﻿@page
+@model XML_Web_Services_Project.Pages.RecreationModel
+@using NeighborhoodFriend_RecreationData;
+@{
+    ViewData["Title"] = "Recreation Data";
+    List<RecreationData> recreations = (List<RecreationData>)ViewData["RecreationDatas"];
+
+}
+
+<div class="text-center">
+    <div class="row">
+        <form action="" method="get" class="form-inline">
+            <input asp-for="Query" name ="query" id="query" class="form-control mr-sm-2 mb-2" placeholder="Postal Code" />
+            <button type ="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</div>
+<div class="container marketing">
+    @if (Model.SearchCompleted)
+    {
+        @if (recreations != null)
+        {
+            @foreach (RecreationData RecreationData in recreations)
+            {
+                <hr class="featurette-divider">
+                <div class="row featurette">
+                    <div>
+                        <h4>@RecreationData.FacilityType</h4>
+                        <p class="lead">@RecreationData.Name</p>
+                        <p class="lead">@RecreationData.ZipCode</p>
+                        <p class="lead">@RecreationData.Phone</p>
+                        <p class="lead">@{
+                            var HumanAddress = @RecreationData.Location.HumanAddress;
+                            String[] pairs = HumanAddress.Split("\"");
+                            string Address = pairs[3];
+                         }</p>
+                        <p class="lead">@Address</p>
+
+                    </div>
+                    </div>
+
+            }
+
+        }
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        //        debugger
+        $('#myTable').DataTable({
+            //            stateSave: true
+
+        });
+    });
+</script>
