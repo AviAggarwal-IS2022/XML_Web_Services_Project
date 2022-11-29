@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using NeighborhoodFriend_RecreationData;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
 
 namespace XML_Web_Services_Project.Pages
 {
@@ -29,12 +31,24 @@ namespace XML_Web_Services_Project.Pages
             if (result.IsSuccessStatusCode)
             {
                 Task<string> readString = result.Content.ReadAsStringAsync();
-                string recreationFacilities = readString.Result;
-                recreationFacilityList = RecreationData.FromJson(recreationFacilities);
+                string jsonString = readString.Result;
+                JSchema RecreationDataSchema = JSchema.Parse(System.IO.File.ReadAllText("recreationschema.json"));
+                JArray RecreationDataJsonArray = JArray.Parse(jsonString);
+                IList<string> validationEvents = new List<string>();
+                if (RecreationDataJsonArray.IsValid(RecreationDataSchema, out validationEvents))
+                {
+                    recreationFacilityList = RecreationData.FromJson(jsonString);
+                }
+                else
+                {
+                    foreach (string evt in validationEvents)
+                    {
+                        Console.WriteLine(evt);
+                    }
+                }
+                recreationFacilityList = RecreationData.FromJson(jsonString);
             }
             return recreationFacilityList;
         }
     }
 }
-
-

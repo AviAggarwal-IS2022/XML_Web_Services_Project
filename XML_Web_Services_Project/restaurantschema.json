@@ -1,0 +1,190 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/RestaurantElement"
+  },
+  "definitions": {
+    "RestaurantElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "recordnum_license": {
+          "type": "string"
+        },
+        "license_no": {
+          "type": "string"
+        },
+        "business_name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "$ref": "#/definitions/City"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "postal_code": {
+          "type": "string",
+          "format": "integer"
+        },
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        },
+        "license_status": {
+          "$ref": "#/definitions/LicenseStatus"
+        },
+        "recordnum_insp": {
+          "type": "string"
+        },
+        "insp_type": {
+          "$ref": "#/definitions/InspType"
+        },
+        "insp_subtype": {
+          "$ref": "#/definitions/InspSubtype"
+        },
+        "action_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "action_sequence": {
+          "type": "string"
+        },
+        "action_status": {
+          "$ref": "#/definitions/ActionStatus"
+        },
+        "code": {
+          "type": "string"
+        },
+        "violation_description": {
+          "type": "string"
+        },
+        "violation_comments": {
+          "type": "string"
+        },
+        "violation_key": {
+          "type": "string"
+        },
+        "last_table_update": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "neighborhood": {
+          "$ref": "#/definitions/Neighborhood"
+        },
+        "phone_number": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_date",
+        "action_status",
+        "address",
+        "business_name",
+        "city",
+        "insp_subtype",
+        "insp_type",
+        "last_table_update",
+        "latitude",
+        "license_no",
+        "license_status",
+        "longitude",
+        "neighborhood",
+        "recordnum_insp",
+        "recordnum_license",
+        "state"
+      ],
+      "title": "RestaurantElement"
+    },
+    "ActionStatus": {
+      "type": "string",
+      "enum": [
+        "Not Abated",
+        "Abated On-Site",
+        "Abated",
+        "CLOS-NO  - No Violations Found"
+      ],
+      "title": "ActionStatus"
+    },
+    "City": {
+      "type": "string",
+      "enum": [
+        "CINCINNATI"
+      ],
+      "title": "City"
+    },
+    "InspSubtype": {
+      "type": "string",
+      "enum": [
+        "STANDARD INSPECTION",
+        "COMPLAINT"
+      ],
+      "title": "InspSubtype"
+    },
+    "InspType": {
+      "type": "string",
+      "enum": [
+        "ROUTINE",
+        "COMPLAINT"
+      ],
+      "title": "InspType"
+    },
+    "LicenseStatus": {
+      "type": "string",
+      "enum": [
+        "LICENSE",
+        "DELINQ",
+        "PAID"
+      ],
+      "title": "LicenseStatus"
+    },
+    "Neighborhood": {
+      "type": "string",
+      "enum": [
+        "HYDE PARK",
+        "CORRYVILLE",
+        "CUF",
+        "MT. ADAMS",
+        "EAST END",
+        "OVER-THE-RHINE",
+        "DOWNTOWN",
+        "WESTWOOD",
+        "MILLVALE",
+        "EAST PRICE HILL",
+        "WEST END",
+        "MADISONVILLE",
+        "OAKLEY",
+        "NORTHSIDE",
+        "ROSELAWN",
+        "AVONDALE",
+        "MT. AUBURN",
+        "CLIFTON",
+        "HARTWELL",
+        "MT. WASHINGTON",
+        "QUEENSGATE",
+        "SPRING GROVE VILLAGE",
+        "COLLEGE HILL",
+        "EVANSTON",
+        "WEST PRICE HILL",
+        "NORTH AVONDALE - PADDOCK HILLS",
+        "PLEASANT RIDGE",
+        "RIVERSIDE"
+      ],
+      "title": "Neighborhood"
+    },
+    "State": {
+      "type": "string",
+      "enum": [
+        "OH"
+      ],
+      "title": "State"
+    }
+  }
+}
+
