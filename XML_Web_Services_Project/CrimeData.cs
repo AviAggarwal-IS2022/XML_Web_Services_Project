@@ -24,8 +24,17 @@
         [JsonProperty("date_to", NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset? DateTo { get; set; }
 
-        [JsonProperty("clsd", NullValueHandling = NullValueHandling.Ignore)]
-        public Clsd? Clsd { get; set; }
+        private Clsd? clsd;
+
+        public Clsd? GetClsd()
+        {
+            return clsd;
+        }
+
+        public void SetClsd(Clsd? value)
+        {
+            clsd = value;
+        }
 
         [JsonProperty("ucr", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
@@ -43,14 +52,32 @@
         [JsonProperty("location")]
         public string Location { get; set; }
 
-        [JsonProperty("theft_code", NullValueHandling = NullValueHandling.Ignore)]
-        public TheftCode? TheftCode { get; set; }
+        private TheftCode? theftCode;
+
+        public TheftCode? GetTheftCode()
+        {
+            return theftCode;
+        }
+
+        public void SetTheftCode(TheftCode? value)
+        {
+            theftCode = value;
+        }
 
         [JsonProperty("side", NullValueHandling = NullValueHandling.Ignore)]
         public Side? Side { get; set; }
 
-        [JsonProperty("hate_bias")]
-        public HateBias HateBias { get; set; }
+        private HateBias hateBias;
+
+        public HateBias GetHateBias()
+        {
+            return hateBias;
+        }
+
+        public void SetHateBias(HateBias value)
+        {
+            hateBias = value;
+        }
 
         [JsonProperty("dayofweek", NullValueHandling = NullValueHandling.Ignore)]
         public Dayofweek? Dayofweek { get; set; }
@@ -91,8 +118,17 @@
         [JsonProperty("latitude_x", NullValueHandling = NullValueHandling.Ignore)]
         public string LatitudeX { get; set; }
 
-        [JsonProperty("victim_age")]
-        public Age VictimAge { get; set; }
+        private Age victimAge;
+
+        public Age GetVictimAge()
+        {
+            return victimAge;
+        }
+
+        public void SetVictimAge(Age value)
+        {
+            victimAge = value;
+        }
 
         [JsonProperty("victim_race", NullValueHandling = NullValueHandling.Ignore)]
         public Race? VictimRace { get; set; }
@@ -100,11 +136,29 @@
         [JsonProperty("victim_ethnicity", NullValueHandling = NullValueHandling.Ignore)]
         public Ethnicity? VictimEthnicity { get; set; }
 
-        [JsonProperty("victim_gender", NullValueHandling = NullValueHandling.Ignore)]
-        public Gender? VictimGender { get; set; }
+        private Gender? victimGender;
 
-        [JsonProperty("suspect_age")]
-        public Age SuspectAge { get; set; }
+        public Gender? GetVictimGender()
+        {
+            return victimGender;
+        }
+
+        public void SetVictimGender(Gender? value)
+        {
+            victimGender = value;
+        }
+
+        private Age suspectAge;
+
+        public Age GetSuspectAge()
+        {
+            return suspectAge;
+        }
+
+        public void SetSuspectAge(Age value)
+        {
+            suspectAge = value;
+        }
 
         [JsonProperty("suspect_race", NullValueHandling = NullValueHandling.Ignore)]
         public Race? SuspectRace { get; set; }
@@ -112,8 +166,17 @@
         [JsonProperty("suspect_ethnicity", NullValueHandling = NullValueHandling.Ignore)]
         public Ethnicity? SuspectEthnicity { get; set; }
 
-        [JsonProperty("suspect_gender", NullValueHandling = NullValueHandling.Ignore)]
-        public Gender? SuspectGender { get; set; }
+        private Gender? suspectGender;
+
+        public Gender? GetSuspectGender()
+        {
+            return suspectGender;
+        }
+
+        public void SetSuspectGender(Gender? value)
+        {
+            suspectGender = value;
+        }
 
         [JsonProperty("totalnumbervictims", NullValueHandling = NullValueHandling.Ignore)]
         [JsonConverter(typeof(ParseStringConverter))]
