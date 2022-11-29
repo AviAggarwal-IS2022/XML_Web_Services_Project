@@ -18,11 +18,14 @@ namespace XML_Web_Services_Project.Pages
         }
         public void OnGet()
         {
-            string project = "Neighborhood Friend";
-
             var task = client.GetAsync("https://data.cincinnati-oh.gov/resource/rg6p-b3h3.json");
             HttpResponseMessage result = task.Result;
-            List<RestaurantData> restaurants = new List<RestaurantData>();
+            List<RestaurantData> restaurants = ParseRestaurantData(result);
+            ViewData["RestDatas"] = restaurants;
+        }
+        public List<RestaurantData> ParseRestaurantData(HttpResponseMessage result)
+        {
+            List<RestaurantData> restaurantsList = new List<RestaurantData>();
             if (result.IsSuccessStatusCode)
             {
                 Task<string> readString = result.Content.ReadAsStringAsync();
@@ -44,8 +47,7 @@ namespace XML_Web_Services_Project.Pages
 
                 restaurants = RestaurantData.FromJson(jsonString);
             }
-
-            ViewData["RestDatas"] = restaurants;
+            return restaurantsList;
         }
     }
 }
